@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calendar Management - Admin</title>
+  <link rel="stylesheet" href="/css/admin.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Calendar Management</h1>
+      <p class="subtitle">Manage Google Calendar connections for appointment booking</p>
+    </header>
+
+    <div id="alert" class="alert hidden"></div>
+
+    <section class="card">
+      <div class="card-header">
+        <h2>Connected Accounts</h2>
+        <a href="/auth/google/authorize" class="btn btn-primary">
+          + Connect Google Calendar
+        </a>
+      </div>
+
+      <div id="accounts-list" class="accounts-list">
+        <div class="loading">Loading accounts...</div>
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="card-header">
+        <h2>Recent Appointments</h2>
+      </div>
+
+      <div id="appointments-list" class="appointments-list">
+        <div class="loading">Loading appointments...</div>
+      </div>
+    </section>
+  </div>
+
+  <script src="/js/admin.js"></script>
+</body>
+</html>
