@@ -1,5 +1,5 @@
 import Database from 'better-sqlite3';
-import { readFileSync } from 'fs';
+import { readFileSync, mkdirSync, existsSync } from 'fs';
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
 import logger from '../utils/logger.js';
@@ -15,6 +15,12 @@ let db = null;
 export function getDatabase() {
   if (!db) {
     const dbPath = process.env.DATABASE_PATH || './data/calendar.db';
+
+    // Ensure the directory exists
+    const dbDir = dirname(dbPath);
+    if (!existsSync(dbDir)) {
+      mkdirSync(dbDir, { recursive: true });
+    }
 
     db = new Database(dbPath);
     db.pragma('journal_mode = WAL');
