@@ -49,13 +49,9 @@ const envSchema = z.object({
   // Business
   COMPANY_NAME: z.string().default('ABC Plumbing'),
 
-  // Google OAuth (required in production, defaults in dev)
-  GOOGLE_CLIENT_ID: isDev
-    ? z.string().default('')
-    : z.string().min(1, 'GOOGLE_CLIENT_ID is required'),
-  GOOGLE_CLIENT_SECRET: isDev
-    ? z.string().default('')
-    : z.string().min(1, 'GOOGLE_CLIENT_SECRET is required'),
+  // Google OAuth (optional - calendar features disabled without it)
+  GOOGLE_CLIENT_ID: z.string().default(''),
+  GOOGLE_CLIENT_SECRET: z.string().default(''),
   GOOGLE_REDIRECT_URI: z.string().default('http://localhost:3000/auth/google/callback'),
 
   // Database

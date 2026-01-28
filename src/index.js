@@ -9,8 +9,17 @@ import { initializeDatabase, closeDatabase } from './db/database.js';
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const app = express();
 
+console.log('Starting server...');
+console.log('PORT:', process.env.PORT);
+console.log('NODE_ENV:', process.env.NODE_ENV);
+
 // Initialize database
-initializeDatabase();
+try {
+  initializeDatabase();
+  console.log('Database initialized');
+} catch (err) {
+  console.error('Database initialization failed:', err);
+}
 
 // Middleware
 app.use(express.json());
